@@ -6,17 +6,17 @@
 
 :root{
   /* PALETA — jasna, architektoniczna, chłodna */
-  --paper:#F5F8F9;          /* główne tło */
-  --paper-2:#E7EFF1;        /* sekcje alternatywne (chłodny jasny szary) */
-  --paper-3:#E7EFF1;        /* delikatne wypełnienia */
-  --ink:#15333B;            /* tekst główny — chłodny grafit */
-  --ink-soft:#2E545E;       /* nagłówki drugorzędne */
-  --muted:#566C72;          /* tekst poboczny */
-  --line:rgba(21,51,59,.12);/* hairline */
-  --accent:#0F7B83;         /* stonowany petrol-slate — jedyny akcent */
-  --accent-d:#0B5F66;
-  --accent-soft:rgba(15,123,131,.10);
-  --dark:#15333B;           /* sekcje ciemne (stopka/CTA) */
+  --paper:#F4F1EC;          /* główne tło */
+  --paper-2:#E9E4DB;        /* sekcje alternatywne (chłodny jasny szary) */
+  --paper-3:#E9E4DB;        /* delikatne wypełnienia */
+  --ink:#14110F;            /* tekst główny — chłodny grafit */
+  --ink-soft:#26211C;       /* nagłówki drugorzędne */
+  --muted:#8A857C;          /* tekst poboczny */
+  --line:rgba(20,17,15,.12);/* hairline */
+  --accent:#E0A040;         /* stonowany petrol-slate — jedyny akcent */
+  --accent-d:#B97E27;
+  --accent-soft:rgba(224,160,64,.10);
+  --dark:#14110F;           /* sekcje ciemne (stopka/CTA) */
 
   /* HOVER ZDJĘĆ — JEDEN standard dla całego silnika (decyzja K. 04.08.2026, artefakt z wariantami).
      AKTUALNE (K.+Szymon 09.08.2026, wybór z artefaktu 6 wariantów): zoom 1.05 przy 1.4s -
@@ -55,8 +55,8 @@
 
   --hairline:1px solid var(--line);
 
-  --font-display:'Schibsted Grotesk','Inter',sans-serif;
-  --font-body:'Mulish',sans-serif;
+  --font-display:'Oswald','Hanken Grotesk',sans-serif;
+  --font-body:'Hanken Grotesk',sans-serif;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -684,171 +684,6 @@ main{display:block}
   .g-badge{gap:.45em;padding:.45em .8em;font-size:.86rem}
   .g-badge .gb-stars{width:62px;height:12.4px}
   .g-badge .gb-ico{width:16px;height:16px}
-}
-
-/* === rodzina: klinika === */
-/* ============================================================
-   RODZINA: KLINIKA (dentysta / gabinet medyczny / weterynarz / fizjoterapia)
-   Doklejane NA WIERZCH base.css. Skin gabinet (Schibsted Grotesk + kliniczny teal).
-   Filozofia: ZAUFANIE + SPOKÓJ + "Umów wizytę". Anty-lęk, czysto, miękko (nie szpital).
-   Tokeny TYLKO istniejące (--paper/--paper-2/--accent/--line/--ink/--sh-md/--r-lg).
-   ============================================================ */
-
-/* --- Miększe karty (anty-szpital, przyjazność) --- */
-.svc,.trust-card,.tile,.gateway,.split-art,.svc-row-art{border-radius:var(--r-lg)}
-
-/* --- PROCES WIZYTY (reskin proces-line: kropki teal, spokojnie) --- */
-.proces.klinika{background:var(--paper-2)}
-.proces.klinika .pno{color:var(--accent)}
-.proces.klinika .proces-line li::after{background:var(--accent);box-shadow:0 0 0 4px var(--paper-2)}
-
-/* --- ZESPÓŁ / LEKARZE (renderowane TYLKO z realnych danych z reconu; domyślnie sekcji brak) --- */
-.zespol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-6)}
-.doc{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
-  transition:transform .28s var(--ease),box-shadow .28s var(--ease)}
-.doc:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
-.doc-photo{aspect-ratio:4/5;overflow:hidden;background:var(--paper-2)}
-.doc-photo img{width:100%;height:100%;object-fit:cover}
-.doc figcaption{padding:var(--space-5)}
-.doc-role{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:var(--space-2)}
-.doc-name{font-family:var(--font-display);font-size:1.12rem;margin-bottom:var(--space-2);line-height:1.2}
-.doc-bio{color:var(--muted);font-size:var(--text-sm);line-height:1.55}
-
-/* --- STICKY "Umów wizytę" (mobile) --- */
-.sticky-reserve{display:none}
-@media(max-width:820px){
-  .sticky-reserve{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;
-    background:var(--line);box-shadow:0 -6px 20px -10px rgba(0,0,0,.4);padding-bottom:env(safe-area-inset-bottom,0px);transition:transform .25s ease,opacity .25s ease}
-  .sticky-reserve.schowany{transform:translateY(110%);opacity:0;pointer-events:none}
-  .sticky-reserve a{padding:15px 8px;text-align:center;font-weight:700;font-size:.95rem;letter-spacing:.01em}
-  .sr-book{flex:1;background:var(--accent);color:#fff}
-  .sr-call{width:60px;background:var(--paper);color:var(--ink);font-size:1.15rem;border-left:1px solid var(--line)}
-  body{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
-}
-
-/* ============================================================
-   FAZA 3 - OSOBNY UKŁAD KLINIKA (research wf_f24cecd3 + krytyka z POLICZONYM WCAG). Doklejane na wierzch.
-   Tożsamość: SPOKÓJ + ZAUFANIE MEDYCZNE + ANTY-LĘK. Jasno, czysto, profesjonalnie, ludzie z twarzami.
-   ============================================================ */
-
-/* --- P1 KONTRAST (krytyk policzył: --accent #0F7B83 jako mały tekst na paper-2 = 4.31 FAIL): mały tekst akcentowy -> accent-d (6.3-7.4). --muted naprawiony w skin.py. --- */
-.eyebrow{color:var(--accent-d)}                       /* było --accent (4.31 na paper-2) */
-.proces.klinika .pno{color:var(--accent-d)}
-.doc-role{color:var(--accent-d)}
-
-/* === HERO KLINIKA: jasny editorial split, zdjęcie OPRAWIONE (img PIERWSZE dziecko = blur-guard + mobilny stack), STATYCZNE === */
-.hero-klinika{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;
-  max-width:78rem;margin-inline:auto;background:var(--paper);
-  padding:clamp(6rem,11svh,8.5rem) clamp(1.4rem,5vw,3.5rem) clamp(3rem,7vh,5rem)}
-.hk-photo{order:2;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;box-shadow:var(--sh-lg);background:var(--paper-2);display:block}
-.hk-panel{order:-1;display:flex;flex-direction:column}     /* copy z lewej (panel order -1), zdjęcie z prawej */
-.hk-title{font-family:var(--font-display);font-weight:600;line-height:1.07;letter-spacing:-.01em;
-  font-size:clamp(2.1rem,1.6rem + 2.2vw,3.4rem);color:var(--ink);margin:var(--space-4) 0 var(--space-4)}
-.hk-lead{color:var(--ink-soft);font-size:var(--text-lg);line-height:1.6;max-width:44ch;margin-bottom:var(--space-6)}
-.hk-actions{display:flex;flex-wrap:wrap;gap:var(--space-3)}
-.hk-rating{margin-top:var(--space-5);color:var(--ink-soft);font-weight:600;font-size:var(--text-sm);font-variant-numeric:tabular-nums}
-@media(max-width:860px){
-  .hero-klinika{grid-template-columns:1fr;padding-top:clamp(5.5rem,11svh,7rem)}
-  .hk-photo{order:-1;aspect-ratio:5/4}                     /* zdjęcie na górze (mobile); panel pod */
-  .hk-panel{order:0}
-}
-
-/* === KOMFORT-BAR: zawsze-obecny ton anty-lęk; WŁASNY layout (kolumny z kreską-akcentem u góry), nie chipy jak promise-bar === */
-.komfort-bar{background:var(--paper-2);border-block:1px solid var(--line);padding-block:0}
-.komfort-bar .wrap{padding-block:var(--space-6)}
-.kb-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:clamp(1rem,3vw,2.4rem)}
-.kb-row li{display:flex;flex-direction:column;gap:.6rem;padding-top:var(--space-3);border-top:2px solid var(--accent);
-  font-family:var(--font-display);font-weight:600;font-size:var(--text-base);color:var(--ink)}
-.kb-tick{display:none}
-
-/* === TRUST-BAND KLINIKA (gated): cyfry INK + akredytacje MONOCHROM (zakaz accent-na-tincie) === */
-.trust-band-klinika{background:var(--paper);border-bottom:1px solid var(--line)}
-.trust-band-klinika .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(1rem,3vw,2.6rem);padding-block:var(--space-7)}
-.kt-stats{display:flex;flex-wrap:wrap;gap:clamp(1rem,3vw,2.6rem)}
-.kt-stat{display:flex;flex-direction:column;align-items:center;text-align:center}
-.kt-num{font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,3vw,2.6rem);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
-.kt-lab{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:.3rem}
-.kt-google{font-weight:700;color:var(--ink);font-size:var(--text-base);background:var(--paper-2);border:var(--hairline);border-radius:999px;padding:.5rem 1.1rem;font-variant-numeric:tabular-nums}
-.kt-akred{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-3);margin:0;padding:0}
-.kt-akred li{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;
-  color:var(--ink-soft);border:1px solid var(--line);border-radius:var(--r-sm);padding:.45rem .9rem;background:var(--paper)}
-
-/* === FAQ (gated): akordeon rozbrajajacy obawy === */
-.faq-list{max-width:48rem;margin:var(--space-8) auto 0;display:flex;flex-direction:column;gap:var(--space-3)}
-.faq-item{border:1px solid var(--line);border-radius:var(--r-md);background:var(--paper);padding:var(--space-4) var(--space-5)}
-.faq-item summary{font-family:var(--font-display);font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
-.faq-item summary::after{content:"+";color:var(--accent-d);font-weight:700;font-size:1.2rem;line-height:1}
-.faq-item[open] summary::after{content:"-"}
-.faq-item p{color:var(--ink-soft);font-size:var(--text-base);line-height:1.6;margin:var(--space-3) 0 0}
-
-/* === PAGEHEAD JASNY (kopia dla klinika - klinika.css nie dziedziczy wellness.css) === */
-.pagehead-soft{min-height:0;overflow:visible;background:var(--paper);border-bottom:1px solid var(--line);
-  padding-top:clamp(7rem,12vh,9.5rem);padding-bottom:clamp(2.5rem,6vh,4.5rem);display:block}
-.pagehead-soft::after{display:none}
-.pagehead-soft .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;color:var(--ink);padding-block:0}
-.pagehead-soft h1{color:var(--ink);font-family:var(--font-display);font-weight:600;letter-spacing:-.01em;max-width:16ch}
-.pagehead-soft .eyebrow{color:var(--accent-d)}
-.pagehead-soft .eyebrow::before{background:var(--accent)}
-.pagehead-soft p{color:var(--ink-soft);margin-top:var(--space-4);max-width:46ch}
-.pagehead-soft .ph-fig{margin:0;aspect-ratio:4/3;border-radius:16px;overflow:hidden;box-shadow:var(--sh-md)}
-.pagehead-soft .ph-fig img{width:100%;height:100%;object-fit:cover}
-.pagehead-soft .ph-copy{order:-1}
-@media(max-width:860px){.pagehead-soft .wrap{grid-template-columns:1fr}.pagehead-soft .ph-copy{order:0}.pagehead-soft .ph-fig{aspect-ratio:16/10}}
-
-/* === PROCES KLINIKA: WŁASNY pionowy timeline (spokojny „krok po kroku" - inny niż poziomy fachowcy/auto/dom; .proces-line nie był stylowany dla klinika) === */
-.proces.klinika .proces-line{list-style:none;margin:var(--space-8) auto 0;padding:0;max-width:46rem;display:flex;flex-direction:column;gap:var(--space-6)}
-.proces.klinika .proces-line li{position:relative;padding-left:var(--space-8);text-align:left}
-.proces.klinika .proces-line li::before{content:"";position:absolute;left:14px;top:6px;bottom:calc(-1 * var(--space-6));width:2px;background:var(--line)}
-.proces.klinika .proces-line li:last-child::before{display:none}
-.proces.klinika .proces-line li::after{content:"";position:absolute;left:8px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--paper-2)}
-.proces.klinika .proces-line .pno{display:block;font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--accent-d);font-variant-numeric:tabular-nums;text-align:left;margin:0}
-.proces.klinika .proces-line h3{font-family:var(--font-display);font-size:1.15rem;margin:.15rem 0 .3rem;text-align:left}
-.proces.klinika .proces-line p{color:var(--ink-soft);font-size:var(--text-base);line-height:1.55;max-width:44ch;text-align:left;margin-inline:0}
-
-/* === OPINIE (gated) - karty (klinika.css nie dziedziczy fachowcy.css gdzie te klasy żyją) === */
-.opinie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:var(--space-6);margin-top:var(--space-8)}
-.op-card{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)}
-.op-star{color:var(--accent-d);letter-spacing:.1em;font-size:.95rem}
-.op-card blockquote{margin:0;color:var(--ink-soft);font-size:var(--text-base);line-height:1.6}
-.op-autor{font-family:var(--font-display);font-weight:700;color:var(--ink);font-size:.95rem}
-
-/* === NAV NOBU (silnik): klinika === */
-.nav{position:fixed;left:0;right:0;backdrop-filter:none;border-bottom:1px solid transparent;z-index:100;transition:transform .35s var(--ease),background .35s ease,box-shadow .35s ease}
-.nav.nav-hidden{transform:translateY(-100%)}
-.nav.is-stuck{background:transparent;box-shadow:none;border-bottom-color:transparent}
-.nav.is-stuck .nav-inner{height:64px}
-.nav .brand{flex-direction:row;align-items:baseline;gap:.6rem;line-height:1}
-.nav .brand .name{font-family:var(--font-display);font-weight:600;font-size:1.5rem;text-transform:uppercase;letter-spacing:.14em}
-.nav .brand .sub{margin-top:0;padding-left:.65rem;border-left:1px solid currentColor;font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
-.nav .nav-links a{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;padding-block:6px}
-.nav .nav-links a::after{height:1px}
-.nav .nav-links a.btn-accent{font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:.5rem 1.1rem;border-radius:4px;box-shadow:none}
-.nav .nav-links a.btn-accent{background:var(--accent-d);border:1px solid var(--accent-d);color:#fff}
-.nav .nav-links a.btn-accent:hover{background:var(--accent-d);border-color:var(--accent-d);color:#fff;filter:brightness(1.07)}
-.nav{background:color-mix(in srgb,var(--paper) 82%,transparent);backdrop-filter:saturate(140%) blur(10px)}
-.nav .brand .name{color:var(--ink)}
-.nav .brand .sub{color:var(--accent-d)}
-.nav .nav-links a:not(.btn-accent){color:var(--ink-soft)}
-.nav .nav-links a:not(.btn-accent):hover,.nav .nav-links a.active:not(.btn-accent){color:var(--ink)}
-.nav .nav-links a:not(.btn-accent)::after{background:var(--accent-d)}
-.nav .nav-toggle span{background:var(--ink)}
-.nav.nav-solid{background:color-mix(in srgb,var(--paper) 96%,transparent);border-bottom:var(--hairline);box-shadow:0 10px 30px -24px rgba(0,0,0,.25)}
-.nav.nav-hidden{box-shadow:none}
-@media(min-width:681px){
-.nav .nav-inner{position:relative;height:64px}
-.nav .nav-links{flex:1;justify-content:center;gap:clamp(1rem,2.2vw,1.9rem);padding-right:15.5rem}
-.nav .nav-links a.btn-accent{position:absolute;right:0;top:50%;transform:translateY(-50%);--klocek-stoi:translateY(-50%);margin:0}
-}
-@media(max-width:680px){
-.nav .nav-links:not(.open){transform:translateY(-160%);visibility:hidden}
-.nav .nav-links.open{visibility:visible}
-.nav .brand .name{font-size:1.12rem;letter-spacing:.1em;line-height:1.15}
-.nav .brand .sub{display:none}
-.nav .brand{min-width:0;overflow:hidden;padding-right:.6rem}
-}
-@media(max-width:430px){
-.nav .brand .name{font-size:.95rem;letter-spacing:.06em}
 }
 
 /* === WARSTWA PREMIUM (silnik, 08.08.2026) === */
@@ -1707,11 +1542,11 @@ footer{view-transition-name:mt-foot}
 }
 
 
-/* === auto-paleta z marki klienta (źródło: zdjęcia) === */
-:root{--accent:#AF5743;--accent-d:#98432F;--accent-soft:rgba(175,87,67,0.10);--paper:#FFF8F7;--paper-2:#F8EEEB;--paper-3:#F0E3E0;--ink:#2A1D1A;--ink-soft:#54433F;--muted:#867875;--line:rgba(42,29,26,.12);}
-.btn-accent{color:#fff}
-.nav .nav-links a.btn-accent{color:#fff}
-.btn-accent[data-accent-d],.cta-d .btn-accent{color:#fff}
-
 /* === szary tekst dociągnięty do czytelności (WCAG 4.5 na wszystkich tłach) === */
-:root{--muted:#6F6461;}
+:root{--muted:#66625B;}
+
+/* === akcent-tekst: --accent zostaje żywy (#E0A040, 2.01:1 na #F4F1EC), litera na jasnym tle bierze #845A1C === */
+:root{--accent-text:#845A1C;}
+.btn-accent{color:#14171c}
+.nav .nav-links a.btn-accent{color:#14171c}
+.btn-accent[data-accent-d],.cta-d .btn-accent{color:#14171c}
